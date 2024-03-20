@@ -1,7 +1,10 @@
-import express from "express";
+import express, { request, response } from "express";
 
 const app = express();
 const port = 3000;
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 const myUsers = [
   {
@@ -42,6 +45,18 @@ app.get("/users/:userID", (request, response) => {
   const userID = request.params.userID;
   const user = myUsers.find((user) => user.id == userID);
   response.json(user);
+});
+
+app.post("/users", (request, response) => {
+  console.log(request.body);
+  const newUsers = {
+    id: myUsers.length + 1,
+    name: request.body.name,
+    surname: request.body.surname,
+    age: parseInt(request.body.age),
+  };
+  myUsers.push(newUsers);
+  response.json(newUsers);
 });
 
 app.listen(port, () => {
