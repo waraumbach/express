@@ -30,9 +30,9 @@ const myUsers = [
   },
 ];
 
-app.get("/", (request, response) => {
+/*app.get("/", (request, response) => {
   response.send("hello");
-});
+});*/
 
 app.get("/users", (request, response) => {
   response.json(myUsers);
