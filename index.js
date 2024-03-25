@@ -64,9 +64,11 @@ app.post("/users", (request, response) => {
 app.put("/users", (request, response) => {
   const { userID } = request.params;
   const { name, surname, age } = request.body;
-  let user = myUsers.find((user) => user.id === parseInt(userID));
+  let user = myUsers.find(user => user.id === parseInt(userID));
 
-  (user.name = name), (user.surname = surname), (user.age = age);
+  user.name = name,
+  user.surname = surname, 
+  user.age = age
 
   response.json(user);
 });
