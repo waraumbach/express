@@ -60,17 +60,6 @@ app.post("/users", (request, response) => {
   response.json(newUsers);
 });
 
-app.put("/users", (request, response) => {
-  console.log(request.body);
-  const { userID } = request.params;
-
-  const { name, surname, age } = request.body;
-
-  let user = myUsers.find((user) => user.id === parseInt(userID));
-  (user.name = name), (user.surname = surname), (user.age = age);
-  response.json(user);
-});
-
 app.listen(port, () => {
   console.log("hello express backend");
 });
